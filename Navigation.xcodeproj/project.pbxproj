@@ -12,6 +12,8 @@
 		F480C48727F33282004E6B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F480C48627F33282004E6B14 /* Assets.xcassets */; };
 		F480C49527F33842004E6B14 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49427F33842004E6B14 /* FeedViewController.swift */; };
 		F480C49827F3385A004E6B14 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49727F3385A004E6B14 /* ProfileViewController.swift */; };
+		F480C49D27F33B65004E6B14 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49C27F33B65004E6B14 /* PostViewController.swift */; };
+		F480C4A027F33C37004E6B14 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49F27F33C37004E6B14 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		F480C48B27F33282004E6B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F480C49427F33842004E6B14 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F480C49727F3385A004E6B14 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F480C49C27F33B65004E6B14 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		F480C49F27F33C37004E6B14 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 			children = (
 				F480C47D27F3327C004E6B14 /* AppDelegate.swift */,
 				F480C47F27F3327C004E6B14 /* SceneDelegate.swift */,
+				F480C49C27F33B65004E6B14 /* PostViewController.swift */,
 				F480C49427F33842004E6B14 /* FeedViewController.swift */,
+				F480C49F27F33C37004E6B14 /* Post.swift */,
 				F480C49727F3385A004E6B14 /* ProfileViewController.swift */,
 				F480C48627F33282004E6B14 /* Assets.xcassets */,
 				F480C48B27F33282004E6B14 /* Info.plist */,
@@ -135,7 +141,9 @@
 				F480C47E27F3327C004E6B14 /* AppDelegate.swift in Sources */,
 				F480C49827F3385A004E6B14 /* ProfileViewController.swift in Sources */,
 				F480C49527F33842004E6B14 /* FeedViewController.swift in Sources */,
+				F480C4A027F33C37004E6B14 /* Post.swift in Sources */,
 				F480C48027F3327C004E6B14 /* SceneDelegate.swift in Sources */,
+				F480C49D27F33B65004E6B14 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
