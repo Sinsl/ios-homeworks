@@ -50,7 +50,31 @@ final class ProfileHeaderView: UIView {
         return label
     }()
     
+    private var statusText: String = ""
+    private var flagStatusButton: Bool = false
+    
+    lazy var addStatusText: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Впишите новый статус"
+        textField.keyboardType = UIKeyboardType.default
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.autocorrectionType = UITextAutocorrectionType.no
+        textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        textField.textColor = .black
+        textField.borderStyle = UITextField.BorderStyle.roundedRect
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 12
+        textField.layer.masksToBounds = true
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing;
+        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textField.addTarget(self, action: #selector(statusTextChanged), for: UIControl.Event.editingChanged)
 
+        return textField
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -66,6 +90,8 @@ final class ProfileHeaderView: UIView {
         addSubview(titleName)
         addSubview(buttonShowStatus)
         addSubview(statusLabel)
+        addSubview(addStatusText)
+        addStatusText.isHidden = true
     }
     
     override func layoutSubviews(){
@@ -76,10 +102,37 @@ final class ProfileHeaderView: UIView {
         titleName.frame = CGRect(x: 132, y: 88 + 27, width: 300, height: 30)
         buttonShowStatus.frame = CGRect(x: 16, y: 88 + 132, width: viewWidth - 32, height: 50)
         statusLabel.frame = CGRect(x: 132, y: 88 + 132 - 54, width: 300, height: 20)
+        addStatusText.frame = CGRect(x: 132, y: 88 + 132 - 64, width: viewWidth - 148, height: 50)
         
     }
+    
+    @objc func statusTextChanged(_ textField: UITextField){
+        statusText = textField.text ?? "Статус не установлен..."
+    }
+    
     @objc func buttonPressed(){
-        print(statusLabel.text!)
+//        print(statusLabel.text!)
+        if flagStatusButton == false {
+            addStatusText.isHidden = false
+            statusLabel.isHidden = true
+            flagStatusButton = true
+            buttonShowStatus.setTitle("Сохранить новый статус", for: .normal)
+            print(statusLabel.text!)
+            return
+        } else {
+            if statusText == "" {
+                statusLabel.text = "Статус не установлен..."
+            } else {
+                statusLabel.text = statusText
+            }
+            statusLabel.isHidden = false
+            addStatusText.isHidden = true
+            flagStatusButton = false
+            addStatusText.text = ""
+            buttonShowStatus.setTitle("Установить новый статус", for: .normal)
+            print(statusLabel.text!)
+            return
+        }
     }
 
 }
