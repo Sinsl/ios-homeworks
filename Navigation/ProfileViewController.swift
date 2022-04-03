@@ -16,11 +16,11 @@ class ProfileViewController: UIViewController {
 
         view.backgroundColor = .systemGray3
         self.view.addSubview(profileHeaderView)
-        
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        
        
     }
     
