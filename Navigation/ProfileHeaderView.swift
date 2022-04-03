@@ -37,7 +37,7 @@ final class ProfileHeaderView: UIView {
             button.layer.shadowColor = UIColor.black.cgColor
             button.layer.shadowRadius = 4
             button.layer.shadowOpacity = 0.7
-//            button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+            button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             
         return button
     }()
@@ -78,7 +78,9 @@ final class ProfileHeaderView: UIView {
         statusLabel.frame = CGRect(x: 132, y: 88 + 132 - 54, width: 300, height: 20)
         
     }
-
+    @objc func buttonPressed(){
+        print(statusLabel.text!)
+    }
 
 }
 
