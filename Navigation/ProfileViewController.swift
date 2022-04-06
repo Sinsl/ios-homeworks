@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController {
         self.view.addSubview(profileHeaderView)
         self.view.addSubview(newButton)
         setLayout()
+        profileHeaderView.statusTextField.delegate = self
         
     }
     
@@ -53,3 +54,10 @@ class ProfileViewController: UIViewController {
     
 
 }
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}
+

@@ -63,6 +63,7 @@ class ProfileHeaderView: UIView {
         textField.placeholder = "Впишите новый статус"
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.textColor = .black
+        textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.backgroundColor = .white
@@ -107,7 +108,6 @@ class ProfileHeaderView: UIView {
             statusLabel.isHidden = true
             flagStatusButton = true
             setStatusButton.setTitle("Сохранить новый статус", for: .normal)
-            print(statusLabel.text!)
             return
         } else {
             if statusText == "" {
@@ -121,6 +121,7 @@ class ProfileHeaderView: UIView {
             statusTextField.text = ""
             setStatusButton.setTitle("Установить новый статус", for: .normal)
             print(statusLabel.text!)
+            statusTextField.resignFirstResponder()
             return
         }
     }
