@@ -10,7 +10,7 @@ import UIKit
 class ProfileHeaderView: UIView {
 
     lazy var avatarImageView: UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "Jorik"))
+        let image = UIImageView(image: UIImage(named: "Jorik"))
             image.translatesAutoresizingMaskIntoConstraints = false
             image.layer.cornerRadius = 50
             image.layer.borderWidth = 3
@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
     lazy var setStatusButton: UIButton = {
         let button = UIButton()
             button.backgroundColor = .systemBlue
-            button.setTitle("Установить новый статус", for: .normal)
+            button.setTitle("Сохранить новый статус", for: .normal)
             button.setTitleColor(.white, for: .normal)
             button.layer.cornerRadius = 14
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -55,7 +55,6 @@ class ProfileHeaderView: UIView {
     }()
     
     private var statusText: String = ""
-    private var flagStatusButton: Bool = false
     
     lazy var statusTextField: UITextField = {
         let textField = UITextField()
@@ -93,7 +92,6 @@ class ProfileHeaderView: UIView {
         addSubview(setStatusButton)
         addSubview(statusLabel)
         addSubview(statusTextField)
-        statusTextField.isHidden = true
     }
     
     @objc func statusTextChanged(_ textField: UITextField){
@@ -103,27 +101,9 @@ class ProfileHeaderView: UIView {
     
     @objc func buttonPressed(){
 //        print(statusLabel.text!)
-        if flagStatusButton == false {
-            statusTextField.isHidden = false
-            statusLabel.isHidden = true
-            flagStatusButton = true
-            setStatusButton.setTitle("Сохранить новый статус", for: .normal)
-            return
-        } else {
-            if statusText == "" {
-                statusLabel.text = "Статус не установлен..."
-            } else {
-                statusLabel.text = statusText
-            }
-            statusLabel.isHidden = false
-            statusTextField.isHidden = true
-            flagStatusButton = false
-            statusTextField.text = ""
-            setStatusButton.setTitle("Установить новый статус", for: .normal)
-            print(statusLabel.text!)
-            statusTextField.resignFirstResponder()
-            return
-        }
+        statusTextField.resignFirstResponder()
+        statusLabel.text = statusText
+        statusTextField.text = ""
     }
         
 
@@ -131,34 +111,34 @@ class ProfileHeaderView: UIView {
     override func updateConstraints() {
         
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: super.safeAreaLayoutGuide.topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo: super.leadingAnchor, constant: 16),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 100),
             avatarImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
-            fullNameLabel.topAnchor.constraint(equalTo: super.safeAreaLayoutGuide.topAnchor, constant: 27),
-            fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16)
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([
-            statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16),
-            statusTextField.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 20),
+            statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
             statusTextField.heightAnchor.constraint(equalToConstant: 50),
-            statusTextField.rightAnchor.constraint(equalTo: superview!.rightAnchor, constant: -16)
+            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
 
         NSLayoutConstraint.activate([
-            setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16),
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: superview!.trailingAnchor, constant: -16)
+            setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
-            statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16),
-            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -34)
+            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.topAnchor, constant: 50)
         ])
 
         super.updateConstraints()
