@@ -9,6 +9,8 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    private let nc = NotificationCenter.default
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -29,7 +31,7 @@ class LogInViewController: UIViewController {
     }()
     
     
-    private let emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Email of phone"
@@ -47,12 +49,13 @@ class LogInViewController: UIViewController {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing;
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.delegate = self
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return textField
     }()
     
-    private let passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Password"
@@ -70,7 +73,8 @@ class LogInViewController: UIViewController {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing;
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.delegate = self
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return textField
     }()
@@ -86,7 +90,7 @@ class LogInViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
-//        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -95,10 +99,40 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self
         setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func kbdShow(notification: NSNotification) {
+        if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentInset.bottom = kbdSize.height
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbdSize.height, right: 0)
+        }
+    }
+    
+    @objc func kbdHide() {
+        scrollView.contentInset = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
+    }
+    
+    @objc func buttonPressed() {
+        
+        let profileViewController = ProfileViewController()
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     private func setLayout() {
@@ -154,5 +188,8 @@ class LogInViewController: UIViewController {
     
 }
 extension LogInViewController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
 }

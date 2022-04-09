@@ -26,12 +26,17 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = false
         view.backgroundColor = .systemGray4
         self.view.addSubview(profileHeaderView)
         self.view.addSubview(newButton)
         setLayout()
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func setLayout() {
