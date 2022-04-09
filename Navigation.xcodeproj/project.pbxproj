@@ -15,6 +15,8 @@
 		F480C49D27F33B65004E6B14 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49C27F33B65004E6B14 /* PostViewController.swift */; };
 		F480C4A027F33C37004E6B14 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49F27F33C37004E6B14 /* Post.swift */; };
 		F480C4A327F33DC8004E6B14 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C4A227F33DC8004E6B14 /* InfoViewController.swift */; };
+		F497465928020846009C0FAF /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497465828020846009C0FAF /* ColorExtension.swift */; };
+		F497465C28020895009C0FAF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497465B28020895009C0FAF /* LogInViewController.swift */; };
 		F4995DE927FDCC1D00993AD1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		F480C49C27F33B65004E6B14 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		F480C49F27F33C37004E6B14 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F480C4A227F33DC8004E6B14 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		F497465828020846009C0FAF /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		F497465B28020895009C0FAF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +66,7 @@
 		F480C47C27F3327C004E6B14 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F497465828020846009C0FAF /* ColorExtension.swift */,
 				F4995DE727FDCBF100993AD1 /* Profile */,
 				F480C47D27F3327C004E6B14 /* AppDelegate.swift */,
 				F480C47F27F3327C004E6B14 /* SceneDelegate.swift */,
@@ -80,6 +85,7 @@
 			children = (
 				F480C49727F3385A004E6B14 /* ProfileViewController.swift */,
 				F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */,
+				F497465B28020895009C0FAF /* LogInViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -155,10 +161,12 @@
 				F480C47E27F3327C004E6B14 /* AppDelegate.swift in Sources */,
 				F480C49827F3385A004E6B14 /* ProfileViewController.swift in Sources */,
 				F480C49527F33842004E6B14 /* FeedViewController.swift in Sources */,
+				F497465928020846009C0FAF /* ColorExtension.swift in Sources */,
 				F480C4A327F33DC8004E6B14 /* InfoViewController.swift in Sources */,
 				F480C4A027F33C37004E6B14 /* Post.swift in Sources */,
 				F480C48027F3327C004E6B14 /* SceneDelegate.swift in Sources */,
 				F480C49D27F33B65004E6B14 /* PostViewController.swift in Sources */,
+				F497465C28020895009C0FAF /* LogInViewController.swift in Sources */,
 				F4995DE927FDCC1D00993AD1 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

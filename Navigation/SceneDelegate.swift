@@ -29,18 +29,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     return UINavigationController(rootViewController: feedViewController)
     }
  
-    func createProfileViewController() -> UINavigationController {
-        let profileViewController = ProfileViewController()
-        profileViewController.title = "Профиль"
-        profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile"), tag: 1)
-    return UINavigationController(rootViewController: profileViewController)
-
+    func createLogInViewController() -> UINavigationController {
+        let logInViewController = LogInViewController()
+        logInViewController.title = "Профиль"
+        logInViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile"), tag: 1)
+    return UINavigationController(rootViewController: logInViewController)
     }
     
     func createTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         UITabBar.appearance().backgroundColor = .black
-        tabBarController.viewControllers = [createFeedViewController(), createProfileViewController()]
+        tabBarController.viewControllers = [createFeedViewController(), createLogInViewController()]
     return tabBarController
     }
 
