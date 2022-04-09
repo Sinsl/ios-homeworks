@@ -102,7 +102,11 @@ class ProfileHeaderView: UIView {
     @objc func buttonPressed(){
 //        print(statusLabel.text!)
         statusTextField.resignFirstResponder()
-        statusLabel.text = statusText
+        if statusText == "" {
+            statusLabel.text = "Статус не установлен..."
+        } else {
+            statusLabel.text = statusText
+        }
         statusTextField.text = ""
     }
         
