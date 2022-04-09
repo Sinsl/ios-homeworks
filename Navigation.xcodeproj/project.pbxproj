@@ -15,6 +15,7 @@
 		F480C49D27F33B65004E6B14 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49C27F33B65004E6B14 /* PostViewController.swift */; };
 		F480C4A027F33C37004E6B14 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C49F27F33C37004E6B14 /* Post.swift */; };
 		F480C4A327F33DC8004E6B14 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C4A227F33DC8004E6B14 /* InfoViewController.swift */; };
+		F4995DE927FDCC1D00993AD1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F480C49C27F33B65004E6B14 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		F480C49F27F33C37004E6B14 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F480C4A227F33DC8004E6B14 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,26 @@
 		F480C47C27F3327C004E6B14 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F4995DE727FDCBF100993AD1 /* Profile */,
 				F480C47D27F3327C004E6B14 /* AppDelegate.swift */,
 				F480C47F27F3327C004E6B14 /* SceneDelegate.swift */,
 				F480C49C27F33B65004E6B14 /* PostViewController.swift */,
 				F480C49427F33842004E6B14 /* FeedViewController.swift */,
 				F480C49F27F33C37004E6B14 /* Post.swift */,
-				F480C49727F3385A004E6B14 /* ProfileViewController.swift */,
 				F480C48627F33282004E6B14 /* Assets.xcassets */,
 				F480C4A227F33DC8004E6B14 /* InfoViewController.swift */,
 				F480C48B27F33282004E6B14 /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F4995DE727FDCBF100993AD1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F480C49727F3385A004E6B14 /* ProfileViewController.swift */,
+				F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				F480C4A027F33C37004E6B14 /* Post.swift in Sources */,
 				F480C48027F3327C004E6B14 /* SceneDelegate.swift in Sources */,
 				F480C49D27F33B65004E6B14 /* PostViewController.swift in Sources */,
+				F4995DE927FDCC1D00993AD1 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
