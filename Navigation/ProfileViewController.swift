@@ -8,13 +8,15 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    let posts = Post.makePosts()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-//        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         return tableView
     }()
     
@@ -40,14 +42,31 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        posts.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+ //       cell.setupCell(post: posts[indexPath.row])
+ 
+        return cell
     }
+
+
 }
 extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ProfileHeaderView()
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        UITableView.automaticDimension
+    }
     
 }
+
 
