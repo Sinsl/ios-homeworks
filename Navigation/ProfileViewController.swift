@@ -20,15 +20,17 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
     
+    private let headerView = ProfileHeaderView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         setLayout()
+        setAnimation()
     }
     
-    
-    func setLayout() {
+    private func setLayout() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -36,6 +38,60 @@ class ProfileViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func setAnimation() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        headerView.avatarImageView.addGestureRecognizer(tapGesture)
+        headerView.avatarImageView.isUserInteractionEnabled = true
+        headerView.buttonStop.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
+    }
+    
+    @objc func tapAction() {
+        
+        let width: CGFloat  = (tableView.frame.width)/headerView.avatarImageView.frame.width
+        let translatedX: CGFloat = self.view.frame.width/2
+        let translatedY: CGFloat = tableView.frame.height/2
+        
+        headerView.shutterView.frame.size = CGSize(width: self.view.frame.width, height: tableView.frame.height)
+        tableView.isScrollEnabled = false
+        headerView.shutterView.layer.zPosition = 1
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.headerView.shutterView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        }, completion: { (true) in
+            self.headerView.buttonStop.isHidden = false
+        })
+
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+            self.headerView.avatarImageView.center = CGPoint(x: translatedX, y: translatedY)
+            self.headerView.avatarImageView.transform = self.headerView.avatarImageView.transform.scaledBy(x: width, y: width)
+            self.headerView.avatarImageView.layoutIfNeeded()
+        })
+        
+        UIView.animate(withDuration: 0.3, delay: 0.5, options: .curveLinear, animations: {
+            self.headerView.buttonStop.alpha = 1
+        })
+    }
+    @objc func pressButton() {
+        
+        let width: CGFloat  = 100/headerView.avatarImageView.frame.width
+
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: {
+            self.headerView.buttonStop.alpha = 0.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveLinear, animations: {
+            self.headerView.avatarImageView.center = CGPoint(x: 66, y: 66)
+            self.headerView.avatarImageView.transform = self.headerView.avatarImageView.transform.scaledBy(x: width, y: width)
+            self.headerView.shutterView.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+            self.headerView.avatarImageView.layoutIfNeeded()
+        }, completion: { (true) in
+            self.headerView.buttonStop.isHidden = true
+            self.headerView.shutterView.layer.zPosition = 0
+            self.headerView.shutterView.frame.size = CGSize(width: 116, height: 116)
+            self.tableView.isScrollEnabled = true
+        })
+
     }
 }
 
@@ -60,8 +116,7 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ProfileHeaderView()
-        return header
+        return headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         UITableView.automaticDimension
