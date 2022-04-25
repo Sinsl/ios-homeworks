@@ -18,6 +18,7 @@
 		F497465928020846009C0FAF /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497465828020846009C0FAF /* ColorExtension.swift */; };
 		F497465C28020895009C0FAF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497465B28020895009C0FAF /* LogInViewController.swift */; };
 		F4995DE927FDCC1D00993AD1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */; };
+		F4E514BB280B48C9005A37CF /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E514BA280B48C9005A37CF /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F497465828020846009C0FAF /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F497465B28020895009C0FAF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		F4E514BA280B48C9005A37CF /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				F480C49727F3385A004E6B14 /* ProfileViewController.swift */,
+				F4E514BA280B48C9005A37CF /* PostTableViewCell.swift */,
 				F4995DE827FDCC1D00993AD1 /* ProfileHeaderView.swift */,
 				F497465B28020895009C0FAF /* LogInViewController.swift */,
 			);
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E514BB280B48C9005A37CF /* PostTableViewCell.swift in Sources */,
 				F480C47E27F3327C004E6B14 /* AppDelegate.swift in Sources */,
 				F480C49827F3385A004E6B14 /* ProfileViewController.swift in Sources */,
 				F480C49527F33842004E6B14 /* FeedViewController.swift in Sources */,

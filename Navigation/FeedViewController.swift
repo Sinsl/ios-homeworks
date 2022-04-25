@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    var post = Post(title: "Мой пост")
+ //   var post = Post(title: "Мой пост")
     
     private lazy var stackView: UIStackView = {
         let view = UIStackView()
@@ -68,6 +68,6 @@ class FeedViewController: UIViewController {
         let postViewController = PostViewController()
 
         self.navigationController?.pushViewController(postViewController, animated: true)
-        postViewController.titlePost = post.title
+//        postViewController.titlePost = post.title
     }
 }
