@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         return tableView
     }()
     
@@ -41,32 +42,56 @@ class ProfileViewController: UIViewController {
 
 
 extension ProfileViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        posts.count
+        if section == 0 { return 1 }
+        if section == 1 { return posts.count }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        cell.setupCell(post: posts[indexPath.row])
- 
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
+            return cell
+        }
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+            cell.setupCell(post: posts[indexPath.row])
+     
+            return cell
+        }
+        return UITableViewCell()
     }
 
 
 }
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        if indexPath.section == 0 {
+            return UITableView.automaticDimension
+        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ProfileHeaderView()
-        return header
+        if section == 0 {
+            let header = ProfileHeaderView()
+            return header
+        }
+        return nil
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        UITableView.automaticDimension
+        if section == 0 { return UITableView.automaticDimension }
+        return 0
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let vc = PhotosViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }    
 }
 
 
