@@ -86,7 +86,12 @@ extension ProfileViewController: UITableViewDelegate {
         if section == 0 { return UITableView.automaticDimension }
         return 0
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let vc = PhotosViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }    
 }
 
 
