@@ -66,6 +66,7 @@ class ProfileViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
             self.headerView.avatarImageView.center = CGPoint(x: translatedX, y: translatedY)
             self.headerView.avatarImageView.transform = self.headerView.avatarImageView.transform.scaledBy(x: width, y: width)
+            self.headerView.avatarImageView.layer.cornerRadius = 0
             self.headerView.avatarImageView.layoutIfNeeded()
         })
         
@@ -83,6 +84,7 @@ class ProfileViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveLinear, animations: {
             self.headerView.avatarImageView.center = CGPoint(x: 66, y: 66)
             self.headerView.avatarImageView.transform = self.headerView.avatarImageView.transform.scaledBy(x: width, y: width)
+            self.headerView.avatarImageView.layer.cornerRadius = 50
             self.headerView.shutterView.backgroundColor = UIColor.black.withAlphaComponent(0.0)
             self.headerView.avatarImageView.layoutIfNeeded()
         }, completion: { (true) in
