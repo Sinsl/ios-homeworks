@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    private let baseView: UIView = {
+    let baseView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemGray6
@@ -18,12 +18,28 @@ class ProfileHeaderView: UIView {
     
     lazy var avatarImageView: UIImageView = {
         let image = UIImageView(image: UIImage(named: "Jorik"))
-            image.translatesAutoresizingMaskIntoConstraints = false
+            image.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
             image.layer.cornerRadius = 50
             image.layer.borderWidth = 3
             image.layer.borderColor = UIColor.white.cgColor
             image.layer.masksToBounds = true
         return image
+    }()
+    
+    let shutterView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+        view.frame = CGRect(x: 0, y: 0, width: 116, height: 116)
+        return view
+    }()
+    
+    let buttonStop: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 25
+        button.setImage(UIImage(named: "cross"), for: .normal)
+        return button
     }()
     
     lazy var fullNameLabel: UILabel = {
@@ -97,7 +113,6 @@ class ProfileHeaderView: UIView {
         
     }
 
-    
     @objc func buttonPressed(){
 //        print(statusLabel.text!)
         statusTextField.resignFirstResponder()
@@ -109,7 +124,7 @@ class ProfileHeaderView: UIView {
         statusTextField.text = ""
     }
         
-func layout() {
+    private func layout() {
         addSubview(baseView)
         NSLayoutConstraint.activate([
             baseView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -117,29 +132,27 @@ func layout() {
             baseView.trailingAnchor.constraint(equalTo: trailingAnchor),
             baseView.heightAnchor.constraint(equalToConstant: 240),
             baseView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            
         ])
         
-        [avatarImageView, fullNameLabel, setStatusButton, statusLabel, statusTextField].forEach{baseView.addSubview($0)}
-        NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-
+        [shutterView, fullNameLabel, setStatusButton, statusLabel, statusTextField].forEach{baseView.addSubview($0)}
+    
+        shutterView.addSubview(avatarImageView)
+        avatarImageView.image = UIImage(named: "Jorik")
+        
+    let indentLeading: CGFloat = avatarImageView.frame.width + 16 * 2
+    
         NSLayoutConstraint.activate([
             fullNameLabel.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16)
+            fullNameLabel.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: indentLeading)
         ])
         
         NSLayoutConstraint.activate([
-            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusLabel.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: indentLeading),
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 30)
         ])
 
         NSLayoutConstraint.activate([
-            statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusTextField.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: indentLeading),
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
             statusTextField.heightAnchor.constraint(equalToConstant: 50),
             statusTextField.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -16)
@@ -151,6 +164,18 @@ func layout() {
             setStatusButton.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -16)
         ])
+        
+        shutterView.addSubview(buttonStop)
+        NSLayoutConstraint.activate([
+            buttonStop.topAnchor.constraint(equalTo: shutterView.topAnchor, constant: 10),
+            buttonStop.trailingAnchor.constraint(equalTo: shutterView.trailingAnchor, constant: -10),
+            buttonStop.widthAnchor.constraint(equalToConstant: 50),
+            buttonStop.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        buttonStop.isHidden = true
+        buttonStop.alpha = 0.0
     }
     
+
 }
