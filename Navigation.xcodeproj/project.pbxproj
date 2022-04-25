@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F465AC322816EF2D00D32FCB /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465AC312816EF2D00D32FCB /* PhotosTableViewCell.swift */; };
 		F465AC352816FC4F00D32FCB /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465AC342816FC4F00D32FCB /* PhotosViewController.swift */; };
+		F465AC382816FDCB00D32FCB /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465AC372816FDCB00D32FCB /* PhotosCollectionViewCell.swift */; };
 		F480C47E27F3327C004E6B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C47D27F3327C004E6B14 /* AppDelegate.swift */; };
 		F480C48027F3327C004E6B14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C47F27F3327C004E6B14 /* SceneDelegate.swift */; };
 		F480C48727F33282004E6B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F480C48627F33282004E6B14 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		F465AC312816EF2D00D32FCB /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		F465AC342816FC4F00D32FCB /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		F465AC372816FDCB00D32FCB /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		F480C47A27F3327C004E6B14 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F480C47D27F3327C004E6B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F480C47F27F3327C004E6B14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				F497465B28020895009C0FAF /* LogInViewController.swift */,
 				F465AC312816EF2D00D32FCB /* PhotosTableViewCell.swift */,
 				F465AC342816FC4F00D32FCB /* PhotosViewController.swift */,
+				F465AC372816FDCB00D32FCB /* PhotosCollectionViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F465AC322816EF2D00D32FCB /* PhotosTableViewCell.swift in Sources */,
+				F465AC382816FDCB00D32FCB /* PhotosCollectionViewCell.swift in Sources */,
 				F465AC352816FC4F00D32FCB /* PhotosViewController.swift in Sources */,
 				F4E514BB280B48C9005A37CF /* PostTableViewCell.swift in Sources */,
 				F480C47E27F3327C004E6B14 /* AppDelegate.swift in Sources */,
