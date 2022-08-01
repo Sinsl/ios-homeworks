@@ -12,7 +12,7 @@ class ProfileHeaderView: UIView {
     let baseView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .systemGray4
         return view
     }()
     

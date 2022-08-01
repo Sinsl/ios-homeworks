@@ -7,11 +7,11 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+public class PostViewController: UIViewController {
 
     var titlePost: String = "Title Post"
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .lightGray
@@ -19,6 +19,7 @@ class PostViewController: UIViewController {
         
         let info = UIBarButtonItem(image: UIImage(named: "info"), style: .plain, target: self, action: #selector(openInfo))
         navigationItem.rightBarButtonItem = info
+        info.tintColor = .systemBlue
     }
     
     @objc func openInfo() {

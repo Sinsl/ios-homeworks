@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 class FeedViewController: UIViewController {
 
@@ -44,7 +45,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemGray3
         self.view.addSubview(stackView)
         setLoyaout()
         setButtons()
