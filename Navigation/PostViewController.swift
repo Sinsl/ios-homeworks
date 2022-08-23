@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class PostViewController: UIViewController {
+class PostViewController: UIViewController {
 
     var titlePost: String = "Title Post"
 

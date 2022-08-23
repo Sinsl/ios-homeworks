@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
@@ -26,18 +27,16 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.backgroundColor = .systemGray6
         setLayout()
         setAnimation()
         backgroundСolor()
     }
     
-    
     private func backgroundСolor() {
         #if DEBUG
-            self.view.backgroundColor = .systemRed
+        self.view.backgroundColor = .systemGray3
         #else
-            self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .systemGray6
         #endif
     }
     
