@@ -4,14 +4,13 @@
 //
 //  Created by Mac Home on 06.04.2022.
 //
-
+import SnapKit
 import UIKit
 
 class ProfileHeaderView: UIView {
     
     let baseView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemGray4
         return view
     }()
@@ -35,7 +34,6 @@ class ProfileHeaderView: UIView {
     
     let buttonStop: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .white
         button.layer.cornerRadius = 25
         button.setImage(UIImage(named: "cross"), for: .normal)
@@ -47,7 +45,6 @@ class ProfileHeaderView: UIView {
             label.text = "Мурчало"
             label.font = UIFont.boldSystemFont(ofSize: 18)
             label.textColor = .black
-            label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -63,7 +60,6 @@ class ProfileHeaderView: UIView {
             button.layer.shadowRadius = 4
             button.layer.shadowOpacity = 0.7
             button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-            button.translatesAutoresizingMaskIntoConstraints = false
             
         return button
     }()
@@ -73,7 +69,6 @@ class ProfileHeaderView: UIView {
             label.text = "Статус не установлен..."
             label.font = label.font.withSize(14)
             label.textColor = .gray
-            label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -81,7 +76,6 @@ class ProfileHeaderView: UIView {
     
     lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Впишите новый статус"
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.textColor = .black
@@ -114,7 +108,6 @@ class ProfileHeaderView: UIView {
     }
 
     @objc func buttonPressed(){
-//        print(statusLabel.text!)
         statusTextField.resignFirstResponder()
         if statusText == "" {
             statusLabel.text = "Статус не установлен..."
@@ -126,56 +119,53 @@ class ProfileHeaderView: UIView {
         
     private func layout() {
         addSubview(baseView)
-        NSLayoutConstraint.activate([
-            baseView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            baseView.topAnchor.constraint(equalTo: topAnchor),
-            baseView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            baseView.heightAnchor.constraint(equalToConstant: 240),
-            baseView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        
+        baseView.snp.makeConstraints{(make) in
+            make.leading.top.trailing.bottom.equalToSuperview()
+            make.height.equalTo(240)
+        }
         
         [shutterView, fullNameLabel, setStatusButton, statusLabel, statusTextField].forEach{baseView.addSubview($0)}
     
         shutterView.addSubview(avatarImageView)
         avatarImageView.image = UIImage(named: "Jorik")
         
-    let indentLeading: CGFloat = avatarImageView.frame.width + 16 * 2
+        let indentLeading: CGFloat = avatarImageView.frame.width + 16 * 2
     
-        NSLayoutConstraint.activate([
-            fullNameLabel.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: indentLeading)
-        ])
+        fullNameLabel.snp.makeConstraints{ (make) in
+            make.top.equalTo(baseView.snp.top).offset(27)
+            make.leading.equalTo(baseView.snp.leading).offset(indentLeading)
+        }
         
-        NSLayoutConstraint.activate([
-            statusLabel.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: indentLeading),
-            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 30)
-        ])
-
-        NSLayoutConstraint.activate([
-            statusTextField.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: indentLeading),
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
-            statusTextField.heightAnchor.constraint(equalToConstant: 50),
-            statusTextField.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -16)
-        ])
-
-        NSLayoutConstraint.activate([
-            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            setStatusButton.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -16)
-        ])
+        
+        statusLabel.snp.makeConstraints{ (make) in
+            make.top.equalTo(fullNameLabel.snp.bottom).offset(30)
+            make.leading.equalTo(baseView.snp.leading).offset(indentLeading)
+        }
+        
+        statusTextField.snp.makeConstraints{ (make) in
+            make.leading.equalTo(baseView.snp.leading).offset(indentLeading)
+            make.trailing.equalTo(baseView.snp.trailing).offset(-16)
+            make.top.equalTo(statusLabel.snp.bottom).offset(10)
+            make.height.equalTo(50)
+        }
+        
+        setStatusButton.snp.makeConstraints{ (make) in
+            make.top.equalTo(statusTextField.snp.bottom).offset(16)
+            make.leading.equalTo(baseView.snp.leading).offset(16)
+            make.trailing.equalTo(baseView.snp.trailing).offset(-16)
+            make.height.equalTo(50)
+        }
         
         shutterView.addSubview(buttonStop)
-        NSLayoutConstraint.activate([
-            buttonStop.topAnchor.constraint(equalTo: shutterView.topAnchor, constant: 10),
-            buttonStop.trailingAnchor.constraint(equalTo: shutterView.trailingAnchor, constant: -10),
-            buttonStop.widthAnchor.constraint(equalToConstant: 50),
-            buttonStop.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        
+        buttonStop.snp.makeConstraints{ (make) in
+            make.top.equalTo(shutterView.snp.top).offset(10)
+            make.trailing.equalTo(shutterView.snp.trailing).offset(-10)
+            make.width.height.equalTo(50)
+        }
         
         buttonStop.isHidden = true
         buttonStop.alpha = 0.0
     }
-    
-
 }

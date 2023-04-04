@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
 
@@ -20,7 +21,7 @@ class PostTableViewCell: UITableViewCell {
     }()
     
     private let imagePost: UIImageView = {
-        let image = UIImageView()
+        var image = UIImageView()
         image.backgroundColor = .black
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -101,8 +102,11 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
     func setupCell(post: Post){
+        ImageProcessor().processImage(sourceImage: UIImage(named: post.image)!, filter: .sepia(intensity: 1.0))
+        { image in
+            imagePost.image = image
+        }
         titlePost.text = post.title
-        imagePost.image = UIImage(named: post.image)
         descriptionPost.text = post.description
         likesPost.text = "Likes: \(post.likes)"
         viewsPost.text = "Views: \(post.views)"
